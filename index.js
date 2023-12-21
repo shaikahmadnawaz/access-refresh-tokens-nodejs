@@ -20,9 +20,9 @@ app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+import userRouter from "./src/routes/user.routes.js";
+
+app.use("/api/v1/users", userRouter);
 
 connectDB()
   .then(() => {
@@ -31,5 +31,5 @@ connectDB()
     });
   })
   .catch((error) => {
-    console.log("MongoDB connection failed");
+    console.log("MongoDB connection failed", error);
   });
