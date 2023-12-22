@@ -46,7 +46,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 
     return { accessToken, refreshToken };
   } catch (error) {
-    throw new Error(error.message);
+    return res.status(500).json({ message: error.message });
   }
 };
 
